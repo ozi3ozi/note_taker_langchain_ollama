@@ -1,4 +1,5 @@
-# Monorepo template
+# PDF chat app with Langchain and Ollama Mixtral
+
 
 ## Development
 

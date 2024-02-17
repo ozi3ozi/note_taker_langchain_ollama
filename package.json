@@ -17,6 +17,9 @@
     "dev": "yarn turbo run dev"
   },
   "devDependencies": {
-    "turbo": "latest"
+    "turbo": "^1.12.4"
+  },
+  "dependencies": {
+    "langchain": "^0.1.19"
   }
 }
