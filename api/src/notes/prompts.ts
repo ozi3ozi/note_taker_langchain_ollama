@@ -118,11 +118,12 @@ export const outputParser = (output: BaseMessageChunk): Array<ArxivPaperNote> =>
     if (!toolCalls  || !toolCalls.arguments) {
         throw new Error("No tool calls found in output");
     }
-    // const notes: Array<ArxivPaperNote> = toolCalls.map((call) => {
-    //     const { notes } = JSON.parse(call.function.arguments);
-    //     return notes;
-    // });
+    // formats the arguments of the tool calls
+    // from: {"notes":[{"note":"The author discusses how well XYZ works.","pageNumbers":[]}]}
+    // to:  [{"note":"The author discusses how well XYZ works.","pageNumbers":[]}]
+    let args = toolCalls.arguments;
+    args = args.substring(args.indexOf("["), args.lastIndexOf("]")+1);
 
-    const notes: Array<ArxivPaperNote> = JSON.parse(toolCalls.arguments);
+    const notes: Array<ArxivPaperNote> = JSON.parse(args);
     return notes;
 }
